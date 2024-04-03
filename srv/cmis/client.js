@@ -127,6 +127,73 @@ module.exports = class CmisClient extends cds.Service {
     return this._buildRequest(request, config);
   }
 
+  /**
+   * Moves an object into another folder of the same repository.
+   *
+   * @param {string} repositoryId - Repository ID
+   * @param {string} objectId - Identifier of the object.
+   * @param {string} sourceFolderId - the id of the folder from where the object shall be moved.
+   * @param {string} targetFolderId - the id of the folder into which the object shall be moved
+   * @returns {OpenApiRequestBuilder}
+   */
+  moveObject(
+    repositoryId,
+    objectId,
+    sourceFolderId,
+    targetFolderId,
+    options = {},
+  ) {
+    const { config = {}, ...optionalParameters } = options;
+
+    const requestBody = {
+      objectId,
+      sourceFolderId,
+      targetFolderId,
+      cmisselector: 'move',
+      ...this.globalParameters,
+      ...optionalParameters,
+    };
+
+    const request = builder.getBrowserRootByRepositoryId(
+      repositoryId,
+      requestBody,
+    );
+
+    return this._buildRequest(request, config);
+  }
+
+  /**
+   * Copies a document into another folder of the same repository.
+   * 
+   * @param {string} repositoryId - Repository ID
+   * @param {string} objectId - the id of the object to be moved.
+   * @param {string} targetFolderId - the id of the folder into which the object shall be moved.
+   * @returns {OpenApiRequestBuilder}
+   */
+  copyObject(
+    repositoryId, 
+    objectId, 
+    targetFolderId, 
+    options = {}
+  ) {
+    const { config = {}, ...optionalParameters } = options;
+
+    const requestBody = {
+      cmisselector: 'createDocumentFromSource',
+      sourceId: objectId,
+      objectId: targetFolderId,
+      ...this.globalParameters,
+      ...optionalParameters,
+    };
+    
+    const request = builder.getBrowserRootByRepositoryId(
+      repositoryId,
+      requestBody,
+    );
+
+    return this._buildRequest(request, config);
+  }
+
 /**
    * Retrieves the version details of a specified object within the CMIS repository.
    *
