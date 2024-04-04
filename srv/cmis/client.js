@@ -150,7 +150,6 @@ module.exports = class CmisClient extends cds.Service {
       objectId,
       sourceFolderId,
       targetFolderId,
-      cmisaction: 'move',
       ...this.globalParameters,
       ...optionalParameters,
     };
