@@ -154,7 +154,7 @@ module.exports = class CmisClient extends cds.Service {
       ...optionalParameters,
     };
 
-    const request = builder.getBrowserRootByRepositoryId(
+    const request = builder.createBrowserRootByRepositoryId(
       repositoryId,
       requestBody,
     );
@@ -186,7 +186,7 @@ module.exports = class CmisClient extends cds.Service {
       ...optionalParameters,
     };
     
-    const request = builder.getBrowserRootByRepositoryId(
+    const request = builder.createBrowserRootByRepositoryId(
       repositoryId,
       requestBody,
     );
