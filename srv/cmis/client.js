@@ -159,6 +159,11 @@ module.exports = class CmisClient extends cds.Service {
       requestBody,
     );
 
+    config.middleware = [
+      ...[].concat(config?.middleware || []).flat(),
+      middlewares.jsonToFormData,
+    ];
+
     return this._buildRequest(request, config);
   }
 
@@ -190,6 +195,11 @@ module.exports = class CmisClient extends cds.Service {
       repositoryId,
       requestBody,
     );
+
+    config.middleware = [
+      ...[].concat(config?.middleware || []).flat(),
+      middlewares.jsonToFormData,
+    ];
 
     return this._buildRequest(request, config);
   }
