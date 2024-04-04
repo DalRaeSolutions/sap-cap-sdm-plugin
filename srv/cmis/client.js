@@ -149,7 +149,7 @@ module.exports = class CmisClient extends cds.Service {
       objectId,
       sourceFolderId,
       targetFolderId,
-      cmisselector: 'move',
+      cmisaction: 'move',
       ...this.globalParameters,
       ...optionalParameters,
     };
@@ -179,7 +179,7 @@ module.exports = class CmisClient extends cds.Service {
     const { config = {}, ...optionalParameters } = options;
 
     const requestBody = {
-      cmisselector: 'createDocumentFromSource',
+      cmisaction: 'createDocumentFromSource',
       sourceId: objectId,
       objectId: targetFolderId,
       ...this.globalParameters,
