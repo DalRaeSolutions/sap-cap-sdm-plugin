@@ -146,6 +146,7 @@ module.exports = class CmisClient extends cds.Service {
     const { config = {}, ...optionalParameters } = options;
 
     const requestBody = {
+      cmisaction: 'move',
       objectId,
       sourceFolderId,
       targetFolderId,
