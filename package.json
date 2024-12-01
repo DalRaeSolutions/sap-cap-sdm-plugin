@@ -33,7 +33,7 @@
     "test:debug": "jest --setupFiles dotenv/config --config jest.config.js"
   },
   "peerDependencies": {
-    "@sap/cds": "^7.6.3"
+    "@sap/cds": "^8 || ^7"
   },
   "dependencies": {
     "@sap-cloud-sdk/connectivity": "^3.12.0",
